@@ -61,4 +61,3 @@
 - garbage: non-addressable data records: cell을 가리키는 cell offset pointer이 없는 경우를 의미함 
 - MVCC가 적용되는 경우: garbage 데이터를 참조하는 트랜잭션이 더 이상 없을때까지 기다렸다 garbage collection을 진행한다. 
 
-
