@@ -1,4 +1,4 @@
-# Chapter 3
+# Chapter 3: File Formats 
 - Disk 사용 시 고려사항
 
 ## Binary Encoding 

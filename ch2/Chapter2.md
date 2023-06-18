@@ -1,4 +1,4 @@
-# Chapter 2 
+# Chapter 2: B-Tree Basics  
 ## B-Tree 
 - Binary tree(X) -> Balanced tree(? 불분명한 어원)
 - Disk based 자료구조로 일반 binary tree를 사용한다면 
