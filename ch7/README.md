@@ -43,7 +43,7 @@
   - memtable flush 과정에서 원자성이 보장돼야하는 작업: 
     - 새로운 memtable로의 switching 작업 
     - old memtable이 flushing state로 변경되는 작업 
-  - ![in-memory-tables.png](in-memory-tables)
+  - ![in-memory-tables.png](in-memory-tables.png)
     - Current memtable: 읽기와 쓰기 작업이 수행되는 대상 
     - Flushing memtable: 읽기 작업은 가능 
     - On-disk flush target: flushing 중이므로 읽기 작업에 사용되지 않음 
@@ -126,7 +126,7 @@
 ### Bitcask 
 - Riak에서 활용 
 - memory를 활용한 버퍼링을 하지 않음 -> logfile을 다이렉트로 저장함
-- ![key-dir.png](key-dir)
+- ![key-dir.png](key-dir.png)
   - memory 자료 구조(hashmap) 
   - 특정 키에 대해 최신 값을 보유한 data file의 위치를 가리킴 
   - compaction 과정에서 old data는 제거됨 
@@ -135,7 +135,7 @@
   - 쓰기 
     - logfile에 데이터를 쓰고 keydir의 pointer을 업데이트 
 ### WiscKey 
-![wisckey.png](wisckey)
+![wisckey.png](wisckey.png)
 - range scan이 가능 
 - sorted LSM tree(index) + vLog(unordered append-only files)
   - sorted LSM tree는 인덱스 용도라 데이터파일에 비해 크기가 작고 압축 효율이 좋음 
