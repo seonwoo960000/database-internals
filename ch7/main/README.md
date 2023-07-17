@@ -107,7 +107,7 @@
   - 즉 bloom filter 질의의 결과가 "데이터 없음"인 경우 항상 데이터가 없음을 알 수 있다 
 - bit array + multiple hash function을 활용해서 구현 
 - 다른 확률형 자료구조 
-  - HyberLogLog(cardinality estimation)
+  - HyperLogLog(cardinality estimation)
   - Count-Min sketch(Frequency estimation)
 ### SKiplist 
 ![skiplist.png](skiplist.png)
@@ -145,3 +145,9 @@
 - main challenge 
   - 구조 변경 시 (switching table, log synchronization)
   - memtables (동시 접근이 많기 때문)
+
+## HyperLogLog
+- cardinality estimation을 위해 사용됨 
+- 대용량데이터에서 유일한 값의 수를 확인하기 위해서는 큰 메모리와 CPU가 요구됨 
+- 정확한 값을 포기하고 예상값을 얻지만 성능을 극대화하는 방법 -> hyperloglog
+- 
