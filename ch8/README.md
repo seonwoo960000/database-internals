@@ -9,7 +9,8 @@
   - 서로 다른 node의 clock이 정확하게 동기화 X 
   - Google spanner 
     - special time API를 제공 
-    - uncertainty bound를 지닌 timestamp 결과를 리턴 
+    - uncertainty bound를 지닌 timestamp 결과를 리턴
+      - ![spanner.png](spanner.png)
 - State consistency 
   - distributed 알고리즘은 상태 일관성을 항상 제공하지는 않는다. 따라서 다양한 방법을 활용하여 상태 일관성을 유지하려고 노력  
   - conflict resolution 
@@ -101,3 +102,38 @@
 ### arbitrary faults 
 - 프로세스 버그 또는 알 수 없는 이유로 비정상적인 동작을 하는 경우 
 
+## 분산 시스템과 관련된 이론 
+### CAP
+![img.png](cap-theorem.png)
+- Consistency, Availability, Partition tolerance
+- CAP이론은 네트워크 partition 상황을 가정 -> Partition이 없는 상황에서 CAP 이론은 생각할 필요가 없음
+  - 분산시스템에서 물리적 네트워크 분할 및 node간 통신시 timeout 등이 발생하는 상황을 모두 partition으로 볼 수 있음  
+    - partition이 없는 상황은 실용적이지 않음 
+  - CAP은 CP와 AP 중 하나만 만족할 수 있음을 설명
+    - CP: 강한 일관성. 일관성 지켜질 수 없다면 가용성을 포기 
+    - AP: 강한 가용성. 일관성이 지켜지지 않더라도 가용성을 위해 일관되지 않은 데이터를 반환 
+  - 한계 
+    - Partition이 없는 상황을 가정할 수 없음
+### PACELC
+- CAP이론은 파티션 상황에서의 "일관성 -- 가용성" 축을 기준으로 시스템을 설명 
+- PACELC는 CAP이론에 정상 상황이라는 축(파티션 상황)을 더한다. 
+  - Partition(o - 비정상상황)    : Availability <--> Consistency 
+  - else Partition(x - 정상상황): Latency <--> Consistency 
+- 비정상 상황 
+  - Consistency를 높이면 -> availability가 낮아짐 
+  - Consistency를 낮추면 -> availability가 높아짐 
+- 정상 상황 
+  - Consistency를 높이면 -> latency가 길어짐 
+  - Consistency를 낮추면 -> latency가 낮아짐
+- 비정상 / 정상상황의 동작방식에 따라 시스템을 아래와 같이 구분할 수 있음 
+  - PA/EL
+  - PC/EL 
+  - PA/EC
+  - PC/EC 
+- MySQL은 ? 
+  - asynchronous replication 
+    - 트랜잭션 발생 시 비동기적으로 데이터 복제 
+    - PA/EL
+  - semi-synchronous replication
+    - 트랜잭션 발생 시 하나의 슬레이브로부터 복제 완료 알림을 받아야함
+    - PA/EC 
