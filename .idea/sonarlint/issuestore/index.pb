@@ -5,5 +5,5 @@ G
 ch4/PostgreSQL_TOAST.md,c/e/ce46d25ace7f6823f250e1599e4c3fd85b198303
 ?
 ch3/Chapter3.md,b/8/b805fa9902b17dad7e94833e1ab0f75e6fe0d57b
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+C
+ch7/hbase/README.md,9/2/927801b4c9a0394ea89c5909bf481b2d57805d31
