@@ -128,9 +128,9 @@
 ### Strong Eventual Consistency and CRDTs
 - Strong eventual consistency 
   - 순서와 상관없이 쓰기작업이 전파될 수 있음 
-  - 최종적으로 conflict가 해결되고 유효한 값이 반영됨  
+  - 최종적으로 conflict가 자동으로 해결되고 유효한 값이 반영됨  
 - CRDT(Conflict-Free Replicated Data Types)
   - e.g. Redis 
-  - conflict가 없을거라고 가정함 
+  - conflict가 발생하면 자동으로 / 최종적으로 해결
     - e.g. distributed counters -> 나중에 merge 하면 됨 
   - 복제가 수행되는 순서가 상관없으면 사용했을 때 효율이 좋음
