@@ -106,15 +106,19 @@
 ### CAP
 ![img.png](cap-theorem.png)
 - Consistency, Availability, Partition tolerance
-- CAP이론은 네트워크 partition 상황을 가정 -> Partition이 없는 상황에서 CAP 이론은 생각할 필요가 없음
-  - 분산시스템에서 물리적 네트워크 분할 및 node간 통신시 timeout 등이 발생하는 상황을 모두 partition으로 볼 수 있음  
-    - partition이 없는 상황은 실용적이지 않음 
+  - Partition tolerance를 희생한다라는 의미 -> partition tolerance가 발생하는 확률이 낮다고 가정 -> single node는 가능하지만 ... multi node에서 partition이 없다는건 불가능
+    - Single node에서 CAP이론을 논하는건 의미가 없음 
+    - 분산시스템에서 물리적 네트워크 분할 및 node간 통신시 timeout 등이 발생하는 상황을 모두 partition으로 볼 수 있음
+  - Consistency, availability를 희생 -> 해당 시스템의 동작방식을 통해 희생의 정도를 조절 
   - CAP은 CP와 AP 중 하나만 만족할 수 있음을 설명
     - CP: 강한 일관성. 일관성 지켜질 수 없다면 가용성을 포기 
     - AP: 강한 가용성. 일관성이 지켜지지 않더라도 가용성을 위해 일관되지 않은 데이터를 반환 
   - 한계 
     - Partition이 없는 상황을 가정할 수 없음
-### PACELC
+    - 실용적이지 않음 
+      - Availability에서는 latency를 고려하지 않음 -> 무한대로 오래 걸리는 응답도 available하다고 가정 
+### PACELC(pass-elk)
+![img.png](pass-elk.png)
 - CAP이론은 파티션 상황에서의 "일관성 -- 가용성" 축을 기준으로 시스템을 설명 
 - PACELC는 CAP이론에 정상 상황이라는 축(파티션 상황)을 더한다. 
   - Partition(o - 비정상상황)    : Availability <--> Consistency 
@@ -126,10 +130,12 @@
   - Consistency를 높이면 -> latency가 길어짐 
   - Consistency를 낮추면 -> latency가 낮아짐
 - 비정상 / 정상상황의 동작방식에 따라 시스템을 아래와 같이 구분할 수 있음 
+  ![img.png](img.png)
   - PA/EL
   - PC/EL 
   - PA/EC
-  - PC/EC 
+  - PC/EC
+    - ZooKeeper
 - MySQL은 ? 
   - asynchronous replication 
     - 트랜잭션 발생 시 비동기적으로 데이터 복제 
